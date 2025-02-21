@@ -33,37 +33,10 @@ const GameStartPage = () => {
 
   return (
     <>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100dvh",
-          width: "100dvw",
-          padding: "5dvh",
-        }}
-      >
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            width: "100%",
-            height: "100%",
-            justifyContent: "center",
-            gap: "3dvw",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: "100%",
-              flexBasis: 445,
-              gap: "4dvh",
-            }}
-          >
-            <div style={{ flexBasis: 160 }}>
+      <div className="flex justify-center items-center h-fit w-screen p-5">
+        <div className="flex h-fit w-full justify-center gap-10">
+          <div className="flex flex-col h-full w-96 gap-6">
+            <div>
               <GameStartTextInput
                 question="Match Number"
                 setTextValue={setMatchNumber}
@@ -71,13 +44,13 @@ const GameStartPage = () => {
                 numberOnly={true}
               />
             </div>
-            <div style={{ flexBasis: 260 }}>
+            <div>
               <GameStartSelectAlliance
                 currentAlliance={alliance}
                 setAlliance={setAlliance}
               />
             </div>
-            <div style={{ flexBasis: 160 }}>
+            <div>
               <GameStartTextInput
                 question="Scouter Initials"
                 setTextValue={setScouterInitials}
@@ -85,17 +58,8 @@ const GameStartPage = () => {
               />
             </div>
           </div>
-
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              height: "100%",
-              flexBasis: 850,
-              gap: "2dvh",
-            }}
-          >
-            <div style={{ flexBasis: "60%" }}>
+          <div className="flex flex-col h-full w-full gap-6">
+            <div>
               <GameStartSelectTeam
                 defaultSelectTeam={selectTeam}
                 setSelectTeam={setSelectTeam}
@@ -103,45 +67,18 @@ const GameStartPage = () => {
                 selectedAlliance={alliance}
               />
             </div>
-
-            <div
-              style={{
-                flexBasis: "40%",
-                display: "flex",
-                flexDirection: "row",
-              }}
-            >
-              <div
-                style={{
-                  flexBasis: "50%",
-                  display: "flex",
-                  justifyContent: "flex-start",
-                  alignItems: "flex-end",
-                }}
-              >
-                <h1
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: "10dvh",
-                    fontWeight: "bold",
-                  }}
-                >
+            <div className="flex justify-between">
+              <div className="flex w-full justify-start items-end">
+                <h1 className="text-white text-5xl font-bold">
                   Game Start
                 </h1>
               </div>
               <div
-                style={{
-                  flexBasis: "50%",
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: "2dvh",
-                }}
-              >
-                <div style={{ flexBasis: "30%" }}>
+                className="flex flex-col h-full w-full gap-6">
+                <div>
                   <ProceedBackButton nextPage={`/`} back={true} />
                 </div>
-                <div style={{ flexBasis: "70%" }}>
+                <div>
                   <ProceedBackButton
                     nextPage={`/auto-start`}
                     inputs={{

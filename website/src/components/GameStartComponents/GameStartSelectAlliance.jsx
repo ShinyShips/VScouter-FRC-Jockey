@@ -44,62 +44,31 @@ const InitialSelectAlliance = ({ currentAlliance, setAlliance }) => {
     <>
       {/* Container */}
       <div
-        style={{
-          border: "1.3dvh solid #1D1E1E",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          paddingLeft: "1dvw",
-          paddingBottom: "2dvh",
-        }}
+        className="w-full h-full border-8 border-[#1D1E1E] bg-[#242424] rounded-2xl flex flex-col items-start justify-center px-3 pb-2 break-words"
       >
         {/* Text */}
         <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-          }}
+          className="text-white text-2xl font-bold pb-2 items-start"
         >
           Select Alliance
         </h1>
 
         {/* Selectors */}
         <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-            width: "97%",
-            gap: "0.5dvw",
-          }}
-        >
+          className="flex justify-between w-full gap-2">
           {/* Red */}
           <div
+            className="bg-[#C80000] rounded-xl h-20 flex-grow"
             style={{
-              backgroundColor: "#C80000",
               boxShadow: `0px 0px 0px ${redSelected ? "4.65dvh #F7B900" : "0.93dvh #1D1E1E"} inset`,
-              borderRadius: "2.33dvh",
-              height: "25.12dvh",
-              flexGrow: 1,
             }}
             onClick={() => clickAlliance("red")}
           ></div>
           {/* Blue */}
           <div
+            className="bg-[#00008B] rounded-xl h-20 flex-grow"
             style={{
-              backgroundColor: "#00008B",
-              height: "25.12dvh",
               boxShadow: `0px 0px 0px ${blueSelected ? "4.65dvh #F7B900" : "0.93dvh #1D1E1E"} inset`,
-              borderRadius: "2.33dvh",
-              flexGrow: 1,
             }}
             onClick={() => clickAlliance("blue")}
           ></div>

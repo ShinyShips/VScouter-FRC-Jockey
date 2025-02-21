@@ -112,54 +112,23 @@ const InitialSelectTeam = ({
     <>
       {/* Container */}
       <div
-        style={{
-          border: "1.3dvh solid #1D1E1E",
-          width: "100%",
-          height: "100%",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
-        }}
-      >
+      className="w-full h-full border-8 border-[#1D1E1E] bg-[#242424] rounded-xl">
         {/* when the text is selected on mobile, when clicking off of typing user doesn't accidentally click on something else */}
         {textSelected &&
           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
             navigator.userAgent
           ) && (
-            <div
-              style={{
-                height: "100%",
-                width: "100%",
-                left: 0,
-                top: 0,
-                position: "absolute",
-                zIndex: 1,
-              }}
-            ></div>
+            <div className="absolute left-0 top-0 w-full h-full z-1"></div>
           )}
 
-        <div style={{ width: "98.5%", height: "100%", paddingLeft: "1.5%" }}>
+        <div className="w-full h-full px-2"> 
           {/* Question */}
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
+          <h1 className="text-white text-2xl font-bold pb-2">
             Select Team
           </h1>
-
           {/* Selectors */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              height: "59%",
-              gap: "1dvh",
-            }}
-          >
-            <div style={{ flexGrow: 1 }}>
+          <div className="flex flex-col w-full h-full gap-2">
+            <div className="flex-grow">
               <SelectTeamButton
                 currentTeamType={"1"}
                 currentTeamStatus={team1Status}
@@ -167,7 +136,7 @@ const InitialSelectTeam = ({
                 teamName={baseTeams[0]}
               />
             </div>
-            <div style={{ flexGrow: 1 }}>
+            <div className="flex-grow">
               <SelectTeamButton
                 currentTeamType={"2"}
                 currentTeamStatus={team2Status}
@@ -175,7 +144,7 @@ const InitialSelectTeam = ({
                 teamName={baseTeams[1]}
               />
             </div>
-            <div style={{ flexGrow: 1 }}>
+            <div className="flex-grow">
               <SelectTeamButton
                 currentTeamType={"3"}
                 currentTeamStatus={team3Status}
@@ -186,39 +155,16 @@ const InitialSelectTeam = ({
           </div>
 
           {/* Custom Team Selector */}
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingTop: "2dvh",
-              zIndex: 2,
-            }}
-          >
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontSize: "4.2dvh",
-                width: "100%",
-                flexBasis: 1,
-                flexGrow: 1,
-                marginRight: "1dvw",
-                height: "8.88dvh",
-              }}
-            >
-              Custom (put team # only):
+          <div className="flex justify-between pt-3 z-[2] items-center">
+            <h1 className="text-white text-xl flex-grow mr-2">
+              Custom:
             </h1>
             <input
+              className="border-2 border-[#1D1E1E] text-white w-full h-full text-xl rounded-lg pl-2"
               type="text"
+              placeholder="Team #"
               style={{
-                border: "0.93dvh solid #1D1E1E",
-                borderRadius: "2.33dvh",
                 backgroundColor: `#${customTeamStatus ? "393939" : "6C6C6C"}`,
-                color: "#FFFFFF",
-                height: "8.88dvh",
-                fontSize: "4.0dvh",
-                flexBasis: 1,
-                flexGrow: 1,
               }}
               value={customTeamValue}
               onChange={(e) => setCustomTeamValue(e.target.value)}

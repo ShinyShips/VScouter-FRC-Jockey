@@ -97,29 +97,14 @@ const ProceedBackButton = ({
   return (
     <div style={{ width: "100%", height: "100%" }}>
       <div
+        className="flex h-full w-full border-8 border-[#1D1E1E] rounded-xl justify-center items-center whitespace-pre-wrap break-words"
         style={{
-          width: "100%",
-          height: "100%",
-          border: "1.63dvh solid #1D1E1E",
           backgroundColor: turnBoxRed ? "#8B0000" : "#242424",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
         }}
         onClick={proceedClick}
         id={back ? "backButton" : "proceedButton"}
       >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
+        <h1 className="text-white font-bold text-3xl text-center p-2">
           {back ? "Back" : message ? message : "Proceed"}
         </h1>
       </div>

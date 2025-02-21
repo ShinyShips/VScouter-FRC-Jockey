@@ -25,9 +25,7 @@ const MainLayout = () => {
     <div
       style={{
         backgroundColor: "#3A3B3E",
-        height: window.innerHeight,
         width: "100dvw",
-        overflow: "hidden",
       }}
     >
       <ToastContainer />

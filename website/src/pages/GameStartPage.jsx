@@ -33,7 +33,7 @@ const GameStartPage = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-fit w-screen p-5">
+      <div className="flex justify-center items-center h-fit w-screen p-3">
         <div className="flex h-fit w-full justify-center gap-10">
           <div className="flex flex-col h-full w-96 gap-6">
             <div>
@@ -68,7 +68,7 @@ const GameStartPage = () => {
               />
             </div>
             <div className="flex justify-between">
-              <div className="flex w-full justify-start items-end">
+              <div className="flex w-full justify-left items-start lg:items-center lg:justify-center">
                 <h1 className="text-white text-5xl font-bold">
                   Game Start
                 </h1>

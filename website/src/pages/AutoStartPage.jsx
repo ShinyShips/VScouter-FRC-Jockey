@@ -57,52 +57,15 @@ const AutoStartPage = () => {
   }, [startPoses]);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        padding: "5dvh",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "5dvw",
-      }}
-    >
-      <div style={{ width: "70%", height: "100%" }}>
+    <div className="flex w-full h-full justify-center items-center gap-5 p-2">
+      <div className="w-full h-full"> 
         <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} />
       </div>
 
-      <div
-        style={{
-          width: "30%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          gap: "2dvh",
-        }}
-      >
-        <h1
-          style={{
-            textAlign: "center",
-            fontSize: "10dvh",
-            fontWeight: "bold",
-            color: "white",
-          }}
-        >
-          Auto Start
-        </h1>
-        <h1
-          style={{
-            textAlign: "center",
-            fontSize: "4.5dvh",
-            fontWeight: "semibold",
-            color: "white",
-          }}
-        >
-          Click where your robot starts on the field.
-        </h1>
-        <div style={{ width: "100%", height: "30%" }}>
+      <div className="flex flex-col gap-8 w-auto h-full">
+        <h1 className="text-5xl font-bold text-white text-center">Auto Start</h1>
+        <h1 className="text-2xl text-white text-center">Click where your robot starts on the field.</h1>
+        <div className="w-full h-auto">
           <ProceedBackButton
             back={true}
             nextPage="/game-start"
@@ -114,7 +77,7 @@ const AutoStartPage = () => {
             }}
           />
         </div>
-        <div style={{ width: "100%", height: "50%" }}>
+        <div className="w-full h-auto">
           <ProceedBackButton
             nextPage={"/auto-scoring"}
             inputs={{

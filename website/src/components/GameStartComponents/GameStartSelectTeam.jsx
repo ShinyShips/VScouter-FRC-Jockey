@@ -112,7 +112,7 @@ const InitialSelectTeam = ({
     <>
       {/* Container */}
       <div
-      className="w-full h-full border-8 border-[#1D1E1E] bg-[#242424] rounded-xl">
+      className="w-full h-full border-8 border-[#1D1E1E] bg-[#242424] rounded-xl p-2">
         {/* when the text is selected on mobile, when clicking off of typing user doesn't accidentally click on something else */}
         {textSelected &&
           /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(

@@ -60,7 +60,7 @@ const InitialSelectAlliance = ({ currentAlliance, setAlliance }) => {
           <div
             className="bg-[#C80000] rounded-xl h-20 flex-grow"
             style={{
-              boxShadow: `0px 0px 0px ${redSelected ? "4.65dvh #F7B900" : "0.93dvh #1D1E1E"} inset`,
+              boxShadow: `0px 0px 0px ${redSelected ? "1rem #F7B900" : " 0.5rem #1D1E1E"} inset`,
             }}
             onClick={() => clickAlliance("red")}
           ></div>
@@ -68,7 +68,7 @@ const InitialSelectAlliance = ({ currentAlliance, setAlliance }) => {
           <div
             className="bg-[#00008B] rounded-xl h-20 flex-grow"
             style={{
-              boxShadow: `0px 0px 0px ${blueSelected ? "4.65dvh #F7B900" : "0.93dvh #1D1E1E"} inset`,
+              boxShadow: `0px 0px 0px ${blueSelected ? "1rem #F7B900" : "0.5rem #1D1E1E"} inset`,
             }}
             onClick={() => clickAlliance("blue")}
           ></div>

@@ -32,16 +32,11 @@ const AutoStartNumberSection = ({ number, startPoses, setStartPoses }) => {
   return (
     <>
       <div
+        className="h-full w-full border-4 border-[#5A5A5A] flex justify-center items-center"
         style={{
-          width: "100%",
-          height: "100%",
           backgroundColor: startPoses[number]
             ? `rgba(247, 185, 0, 0.5)`
             : `rgba(217, 217, 217, 0.5)`,
-          border: "1.16dvh solid #5A5A5A",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
         }}
         onClick={() => {
           updateStartPoses();

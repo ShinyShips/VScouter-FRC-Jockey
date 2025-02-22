@@ -15,36 +15,28 @@ import AutoStartNumberSection from "./AutoStartNumberSection";
  */
 const AutoStartMap = ({ startPoses, setStartPoses }) => {
   return (
-    <>
+    <div className="relative h-full w-full">
       {/* Render the map for the robot to start */}
-      <div
-        style={{
-          backgroundImage: `url(${fieldMap})`,
-          backgroundSize: "100% 100%",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          borderRadius: "4dvh",
-        }}
-      >
+      <img
+        src={fieldMap}
+        className="h-auto w-full max-h-96 lg:max-h-full"
+      />
+      <div className="absolute flex left-0 top-0 h-48 w-full lg:h-96">
         {[0, 1, 2, 3, 4,].map((value, index) => {
-          return (
-            <div style={{ height: "50%", width: "50%" }} key={index}>
-              <AutoStartNumberSection
-                number={index}
-                startPoses={startPoses}
-                setStartPoses={setStartPoses}
-              />
-            </div>
-          );
-        })}
+            return (
+              <div
+                className="w-full" 
+                key={index}>
+                <AutoStartNumberSection
+                  number={index}
+                  startPoses={startPoses}
+                  setStartPoses={setStartPoses}
+                />
+              </div>
+            );
+          })}
       </div>
-    </>
+    </div>
   );
 };
 

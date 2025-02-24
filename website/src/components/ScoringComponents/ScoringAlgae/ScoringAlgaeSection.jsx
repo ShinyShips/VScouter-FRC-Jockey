@@ -8,24 +8,13 @@ const ScoringAlgaeSection = ({ pickData, placeData }) => {
 
   return (
     <div
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#3B3B3B",
-        borderColor: "#1D1E1E",
-        borderWidth: "2dvh",
-        borderRadius: "3.49dvh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <h1 style={{ color: "#FFFFFF", fontSize: "7dvh", fontWeight: "bold" }}>
+      className="flex w-full h-full bg-[#3B3B3B] border-8 border-[#1D1E1E] rounded-xl flex-col justify-center items-center">
+      <h1 className="text-white text-4xl font-bold py-2">
         Algae
       </h1>
       <div
-        style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}
+        className="w-full h-full ~p-1/4 overflow-hidden"
+        // style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}
         onClick={() => {
           if (pickPositionSelected == "") {
             toast.warn("Please select a pick position first.");
@@ -39,7 +28,10 @@ const ScoringAlgaeSection = ({ pickData, placeData }) => {
           pickData={pickData}
         />
       </div>
-      <div style={{ width: "90%", height: "25%", marginBottom: "2dvh" }}>
+      <div
+        className="w-full h-full p-2" 
+        // style={{ width: "90%", height: "25%", marginBottom: "2dvh" }}
+      >
         <ScoringPickup
           pickData={pickData}
           pickPositionSelected={pickPositionSelected}

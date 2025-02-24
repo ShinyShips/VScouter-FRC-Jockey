@@ -14,17 +14,20 @@ const AutoScoringAlgaePlace = ({
   const positionIcons = [NetShotIcon, ProcessorIcon, DropMissIcon];
   return (
     <div
-      style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        width: "100%",
-        height: "100%",
-        gap: "1dvw",
-      }}
+      className="flex w-full h-full justify-between items-center gap-1"
+      // style={{
+      //   display: "flex",
+      //   justifyContent: "space-between",
+      //   alignItems: "center",
+      //   width: "100%",
+      //   height: "100%",
+      //   gap: "1dvw",
+      // }}
     >
-      {["Net Shot", "Processor", "Drop/Miss"].map((position, index) => (
-        <div style={{ width: "100%", height: "100%", flex: 1 }} key={index} >
+      {["Net", "Processor", "Miss"].map((position, index) => (
+        <div className="w-full h-full max-w-[33%]" 
+        // style={{ width: "100%", height: "100%", flex: 1 }} 
+        key={index} >
           <ScoringAlgaePlaceButton
             position={position}
             icon={positionIcons[index]}

@@ -247,200 +247,44 @@ const ScoringPage = ({
   }, []);
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "5dvh",
-        gap: "5dvh",
-      }}
-    >
-      <div
-        style={{
-          width: "50%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "1.5dvh",
-        }}
-      >
-        {mode == "auto" && (
-          <div
-            style={{
-              width: "100%",
-              height: "15%",
-              backgroundColor: passedStartLine ? "#507144" : "#242424",
-              border: "1.63dvh solid #1D1E1E",
-              borderRadius: "2dvh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            onClick={() => setPassedStartLine(!passedStartLine)}
+    <div className="grid grid-cols-2 grid-rows-[repeat(3,auto)] grid-flow-col w-full max-w-full h-full justify-center p-5 gap-5">
+      {mode == "auto" && (
+        <section
+          className="w-full h-16 flex justify-center items-center rounded-lg border-8 border-[#1D1E1E]"
+          style={{
+            backgroundColor: passedStartLine ? "#507144" : "#242424",
+          }}
+          onClick={() => setPassedStartLine(!passedStartLine)}
           >
-            <h1
-              style={{ color: "white", fontSize: "3.5dvh", fontWeight: "700" }}
-            >
+            <h1 className="text-white text-xl md:text-4xl font-bold">
               Passed Starting Line
             </h1>
-          </div>
-        )}
-
-        <div style={{ width: "100%", height: mode == "auto" ? "85%" : "100%" }}>
+        </section>
+      )}
+      <section 
+        className="w-full row-span-2 flex flex-col justify-center items-center gap-5"
+        style={{ gridRow: mode == "auto" ? "span 2 / span 2" : "span 3 / span 3"}}
+      >
+        <div className="w-full h-full">
           <ScoringCoralSection
             pickData={pickCoralData}
             placeData={placeCoralData}
           />
         </div>
-      </div>
-      <div
-        style={{
-          width: "50%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "2.5dvh",
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            height: "35%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div
-            style={{
-              width: "100%",
-              height: "25%",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontSize: "8dvh",
-                fontWeight: "bold",
-              }}
-            >
+      </section>
+      <section className="w-full h-fit flex flex-col justify-center items-center">
+          <div className="w-full h-full flex justify-center items-center pb-4">
+            <h1 className="text-white text-5xl font-bold">
               {mode.charAt(0).toUpperCase() + mode.slice(1)}
             </h1>
           </div>
-
-          <div
-            style={{
-              width: "100%",
-              height: "75%",
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
-              gap: "2dvw",
-              paddingLeft: "2dvw",
-              paddingRight: "2dvw",
-            }}
-          >
-            <div
-              style={{
-                width: "50%",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                gap: "2.5dvh",
-              }}
-            >
-              <div
-                style={{
-                  width: "100%",
-                  height: "50%",
-                }}
-              >
-                <ProceedBackButton
-                  nextPage={pastPage}
-                  back={true}
-                  inputs={{
-                    ...(states?.inputs || {}),
-                    [mode]: {
-                      coral: Object.assign(
-                        {
-                          placeL1Count: placeCoralL1Count,
-                          placeL2Count: placeCoralL2Count,
-                          placeL3Count: placeCoralL3Count,
-                          placeL4Count: placeCoralL4Count,
-                          placeDropMissCount: placeCoralDropMissCount,
-                        },
-                        ...pickCoralData.map((singleCoralData) => ({
-                          ["pick" +
-                          singleCoralData.position.replace(" ", "") +
-                          "Count"]: singleCoralData.count,
-                        }))
-                      ),
-                      algae: Object.assign(
-                        {
-                          placeNetShot: placeAlgaeNetShot,
-                          placeProcessor: placeAlgaeProcessor,
-                          placeDropMiss: placeAlgaeDropMiss,
-                        },
-                        ...pickAlgaeData.map((singleAlgaeData) => ({
-                          ["pick" +
-                          singleAlgaeData.position.replace(" ", "") +
-                          "Count"]: singleAlgaeData.count,
-                        }))
-                      ),
-                      ...(mode === "auto" && {
-                        passedStartLine,
-                        coralPreloaded,
-                      }),
-                    },
-                  }}
-                />
-              </div>
-              <div
-                style={{
-                  width: "100%",
-                  height: "50%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  cursor: "pointer",
-                  border: "1.63dvh solid #1D1E1E",
-                  backgroundColor: "#242424",
-                  borderRadius: "3.49dvh",
-                }}
-                onClick={handleUndo}
-              >
-                <h1
-                  style={{
-                    color: "#FFFFFF",
-                    fontSize: "5.58dvh",
-                    fontWeight: "bold",
-                    textAlign: "center",
-                  }}
-                >
-                  Undo
-                </h1>
-              </div>
-            </div>
-            <div style={{ width: "50%", height: "100%" }}>
+      </section>
+      <section className="w-full flex flex-col justify-center items-center gap-5">
+          <div className="grid grid-cols-2 grid-rows-2 grid-flow-col w-full h-full justify-center items-center gap-5 px-4">
+            <div className="w-full h-full">
               <ProceedBackButton
-                nextPage={nextPage}
-                blink={autoEnded}
+                nextPage={pastPage}
+                back={true}
                 inputs={{
                   ...(states?.inputs || {}),
                   [mode]: {
@@ -470,20 +314,71 @@ const ScoringPage = ({
                         "Count"]: singleAlgaeData.count,
                       }))
                     ),
-                    ...(mode === "auto" && { passedStartLine }),
+                    ...(mode === "auto" && {
+                      passedStartLine,
+                      coralPreloaded,
+                    }),
                   },
                 }}
               />
             </div>
+            <button
+              className="w-full h-full flex justify-center items-center cursor-pointer border-8 border-[#1D1E1E] rounded-xl bg-[#242424]"
+              onClick={handleUndo}
+            >
+              <h1 className="text-white ~text-2xl/5xl font-bold p-2">
+                Undo
+              </h1>
+            </button>
+          <div
+            className="w-full h-full row-span-2" 
+          // style={{ width: "50%", height: "100%" }}
+          >
+            <ProceedBackButton
+              nextPage={nextPage}
+              blink={autoEnded}
+              inputs={{
+                ...(states?.inputs || {}),
+                [mode]: {
+                  coral: Object.assign(
+                    {
+                      placeL1Count: placeCoralL1Count,
+                      placeL2Count: placeCoralL2Count,
+                      placeL3Count: placeCoralL3Count,
+                      placeL4Count: placeCoralL4Count,
+                      placeDropMissCount: placeCoralDropMissCount,
+                    },
+                    ...pickCoralData.map((singleCoralData) => ({
+                      ["pick" +
+                      singleCoralData.position.replace(" ", "") +
+                      "Count"]: singleCoralData.count,
+                    }))
+                  ),
+                  algae: Object.assign(
+                    {
+                      placeNetShot: placeAlgaeNetShot,
+                      placeProcessor: placeAlgaeProcessor,
+                      placeDropMiss: placeAlgaeDropMiss,
+                    },
+                    ...pickAlgaeData.map((singleAlgaeData) => ({
+                      ["pick" +
+                      singleAlgaeData.position.replace(" ", "") +
+                      "Count"]: singleAlgaeData.count,
+                    }))
+                  ),
+                  ...(mode === "auto" && { passedStartLine }),
+                },
+              }}
+            />
           </div>
-        </div>
-        <div style={{ width: "100%", height: "65%" }}>
+          </div>
+        </section>
+        <section className="w-full h-full">
           <ScoringAlgaeSection
             pickData={pickAlgaeData}
             placeData={placeAlgaeData}
           />
-        </div>
-      </div>
+        </section>
     </div>
   );
 };

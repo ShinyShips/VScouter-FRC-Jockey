@@ -11,39 +11,14 @@ const AutoScoringCoralMap = ({
 }) => {
   
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <div
-          style={{
-            position: "absolute",
-            width: "100%",
-            height: "80%",
-            zIndex: 1,
-            color: "white",
-            fontSize: "20px",
-            textAlign: "center",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
+    <div className="flex w-full h-full justify-center items-center ~p-2/16">
+      <div className="relative w-full h-full">
+        <div className="absolute w-full h-4/5 z-10 text-white text-2xl flex flex-col justify-center items-center">
           {[4, 3, 2, 1].map((item, index) => (
-            <div key={index} style={{ width: "100%", height: "25%" }}>
+            <div 
+              key={index}
+              className="w-full h-1/4"
+            >
               <ScoringCoralPlaceCounter
                 position={`L${item}`}
                 placeCount={placeData[index].count}
@@ -56,25 +31,9 @@ const AutoScoringCoralMap = ({
           ))}
         </div>
 
-        <div
-          style={{
-            position: "relative",
-            width: "100%",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <img src={ReefSideView} style={{ width: "75%", height: "80%" }} />
-
-          <div
-            style={{
-              width: "100%",
-              height: "20%",
-            }}
-          >
+        <div className="relative w-full h-full flex flex-col justify-center items-center">
+          <img src={ReefSideView} className="w-3/4 h-4/5"/>
+          <div className="w-full h-1/5">
             <ScoringCoralPlaceCounter
               position={"Drop/Miss"}
               placeCount={placeData[placeData.length - 1].count}

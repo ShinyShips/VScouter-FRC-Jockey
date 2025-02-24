@@ -13,42 +13,14 @@ const ScoringCoralSection = ({
 
   return (
     <div
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#3B3B3B",
-        borderColor: "#1D1E1E",
-        borderWidth: "2dvh",
-        borderRadius: "3.49dvh",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <div
-        style={{
-          width: "90%",
-          height: "8%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5dvh",
-            fontWeight: "bold",
-            marginBottom: 0,
-          }}
-        >
+      className="flex w-full h-full bg-[#3B3B3B] border-8 border-[#1D1E1E] rounded-xl flex-col justify-center items-center">
+      <div className="flex w-full h-full justify-center items-center">
+        <h1 className="text-white text-3xl font-bold pt-2">
           Coral
         </h1>
       </div>
-
       <div
-        style={{ width: "80%", height: "70%", marginBottom: "1.5dvh" }}
+        className="flex w-full h-full"
         onClick={() => {
           if (pickPositionSelected == "") {
             toast.warn("Please select a pick position first .");
@@ -62,7 +34,7 @@ const ScoringCoralSection = ({
           pickData={pickData}
         />
       </div>
-      <div style={{ width: "90%", height: "17%" }}>
+      <div className="flex w-full h-full ~px-2/4 pb-4">
         <ScoringPickup
           pickData={pickData}
           pickPositionSelected={pickPositionSelected}

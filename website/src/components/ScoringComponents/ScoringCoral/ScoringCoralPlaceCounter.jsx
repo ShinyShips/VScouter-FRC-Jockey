@@ -9,11 +9,8 @@ const ScoringCoralPlaceCounter = ({
   pickData,
 }) => {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-      }}
+    <button
+      className="w-full h-full"
       onClick={() => {
         if (pickPositionSelected != "") {
           setPlaceCount(placeCount + 1);
@@ -26,41 +23,21 @@ const ScoringCoralPlaceCounter = ({
         }
       }}
     >
-      <div
+      <span
+        className="w-full h-full flex justify-between items-center border-[#1D1E1E] border-4 rounded-xl"
         style={{
           backgroundColor: "rgb(133, 133, 133, .50)",
-          border: "0.5dvw solid #1D1E1E",
-          height: "100%",
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          borderRadius: "2dvh",
         }}
         id={position + "CoralPlace"}
       >
-        <h1
-          style={{
-            color: "white",
-            fontSize: "5dvh",
-            fontWeight: "bold",
-            paddingLeft: "1dvw",
-          }}
-        >
+        <h1 className="text-white ~text-2xl/6xl font-bold pl-4">
           {position}
         </h1>
-        <h1
-          style={{
-            color: "white",
-            fontSize: "7dvh",
-            fontWeight: "bold",
-            paddingRight: "1dvw",
-          }}
-        >
+        <h1 className="text-white ~text-2xl/6xl font-bold pr-4">
           {placeCount}
         </h1>
-      </div>
-    </div>
+      </span>
+    </button>
   );
 };
 

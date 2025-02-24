@@ -7,17 +7,11 @@ const ScoringPickupButton = ({
   place
 }) => {
   return (
-    <div
+    <button
+      className="flex w-full h-full justify-center items-center border-8 border-[#1D1E1E] rounded-xl ~p-0/3"
       style={{
-        width: "100%",
-        height: "100%",
         backgroundColor:
           pickPositionSelected == position ? "#507144" : "#242424",
-        border: "1.63dvh solid #1D1E1E",
-        borderRadius: "2dvh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
       }}
       onClick={() => {
         if (pickPositionSelected == position) {
@@ -28,10 +22,12 @@ const ScoringPickupButton = ({
       }}
       id={position+place+"Pick"}
     >
-      <h1 style={{ color: "white", fontSize: "3.25dvh", fontWeight: "700" }}>
+      <h1 
+        className="text-white ~text-xs/xl ~p-0/2 font-bold"
+      >
         {position}
       </h1>
-    </div>
+    </button>
   );
 };
 

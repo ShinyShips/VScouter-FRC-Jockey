@@ -20,7 +20,7 @@ const SettingsButton = ({
   return (
     <>
       <button
-        className="flex h-full w-full border-8 border-[#1D1E1E] bg-[#4A4A4A] rounded-xl justify-center items-center whitespace-pre-wrap break-words text-white font-bold ~text-2xl/5xl text-center p-2"
+        className="flex h-full w-full border-8 border-[#1D1E1E] bg-[#4A4A4A] rounded-xl justify-center items-center whitespace-pre-wrap break-words text-white font-bold ~text-2xl/5xl text-center ~p-2/8"
         onClick={() => setState(!state)} // Toggles the state when the button is clicked
       >
         {question}

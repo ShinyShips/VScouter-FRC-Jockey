@@ -73,7 +73,7 @@ const SettingsPage = () => {
           (
             <div className="flex flex-col w-full h-fit max-h-16 justify-between gap-2 mb-2">
               <button
-                className="flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl p-2"
+                className="flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl ~p-2/8"
                 onClick={() => navigate("/match-data")} // Toggles the state when the button is clicked
               >
                 Get Match Data

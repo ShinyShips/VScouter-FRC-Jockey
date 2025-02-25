@@ -11,42 +11,21 @@ import React from "react"; // Imports the React library to create components
 const ParseDataSelectedViewer = ({ selectedFiles, setSelectedFiles }) => {
   return (
     <>
-      <div
-        style={{
-          width: "22dvw",
-          height: "100%",
-          backgroundColor: "#929292",
-          border: "1.3dvh solid #2B2B2B",
-          borderRadius: "2.683dvh",
-          overflowY: "auto",
-          overflowX: "hidden",
-        }}
-      >
+      <div className="w-full h-full bg-[#929292] border-8 border-[#2B2B2B] rounded-xl overflow-y-scroll">
         <ul>
           {/* Loops over each file in selectedFiles and creates a list item */}
           {selectedFiles.map((file, index) => (
             <li key={index}>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  borderTop: "1.3dvh solid #2B2B2B",
-                }}
-              >
+              <div className="flex items-center justify-between border-b-2 border-[#2B2B2B]">
                 {/* Displays the file name */}
-                <h1 style={{ fontSize: "2.5dvh", marginLeft: "0.64dvw" }}>
+                <span style={{ fontSize: "2.5dvh", marginLeft: "0.64dvw" }}>
                   {file.name}
-                </h1>
+                </span>
 
                 {/* Displays a clickable 'x' button for removing the file */}
-                <h1
-                  style={{
-                    fontSize: "3.5dvh",
-                    marginRight: "2dvw",
-                    color: "red",
-                    fontWeight: "bold",
-                  }}
+                <button
+                  type="button"
+                  className="text-2xl mr-2 text-red-500 font-bold"
                   onClick={() => {
                     // Filters out the clicked file from the list
                     setSelectedFiles(
@@ -55,7 +34,7 @@ const ParseDataSelectedViewer = ({ selectedFiles, setSelectedFiles }) => {
                   }}
                 >
                   x
-                </h1>
+                </button>
               </div>
             </li>
           ))}

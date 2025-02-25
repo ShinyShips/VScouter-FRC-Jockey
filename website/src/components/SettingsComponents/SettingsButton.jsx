@@ -19,25 +19,12 @@ const SettingsButton = ({
 }) => {
   return (
     <>
-      <div
-        style={{
-          width: `${width}dvw`,
-          height: `${height}dvh`,
-          backgroundColor: "#4A4A4A",
-          border: "1.63dvh solid #1D1E1E",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+      <button
+        className="flex h-full w-full border-8 border-[#1D1E1E] bg-[#4A4A4A] rounded-xl justify-center items-center whitespace-pre-wrap break-words text-white font-bold ~text-2xl/5xl text-center p-2"
         onClick={() => setState(!state)} // Toggles the state when the button is clicked
       >
-        <h1
-          style={{ color: "#FFFFFF", fontSize: "5.58dvh", fontWeight: "bold" }}
-        >
-          {question}
-        </h1>
-      </div>
+        {question}
+      </button>
     </>
   );
 };

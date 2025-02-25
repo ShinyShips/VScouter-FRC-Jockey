@@ -95,20 +95,16 @@ const ProceedBackButton = ({
   };
 
   return (
-    <div className="w-full h-full">
-      <button
-        className="flex h-full w-full border-8 border-[#1D1E1E] rounded-xl justify-center items-center whitespace-pre-wrap break-words"
-        style={{
-          backgroundColor: turnBoxRed ? "#8B0000" : "#242424",
-        }}
-        onClick={proceedClick}
-        id={back ? "backButton" : "proceedButton"}
-      >
-        <h1 className="text-white font-bold ~text-2xl/5xl text-center p-2">
-          {back ? "Back" : message ? message : "Proceed"}
-        </h1>
-      </button>
-    </div>
+    <button
+      className="flex h-full w-full border-8 border-[#1D1E1E] rounded-xl justify-center items-center whitespace-pre-wrap break-words text-white font-bold ~text-2xl/5xl text-center p-2"
+      style={{
+        backgroundColor: turnBoxRed ? "#8B0000" : "#242424",
+      }}
+      onClick={proceedClick}
+      id={back ? "backButton" : "proceedButton"}
+    >
+      {back ? "Back" : message ? message : "Proceed"}
+    </button>
   );
 };
 

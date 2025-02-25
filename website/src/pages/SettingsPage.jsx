@@ -39,57 +39,68 @@ const SettingsPage = () => {
   return (
     <>
       {/* Container for the settings buttons */}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          height: "100dvh",
-          gap: "2dvh",
-          marginTop: "10dvh",
-        }}
-      >
-        {/* Settings Buttons */}
-        <div
-          style={{
-            width: `90dvw`,
-            height: `15dvh`,
-            backgroundColor: "#4A4A4A",
-            border: "1.63dvh solid #1D1E1E",
-            borderRadius: "3.49dvh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          onClick={() => navigate("/match-data")} // Toggles the state when the button is clicked
-        >
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
-            Get Match Data
-          </h1>
+      <div className="flex flex-col h-screen gap-2 p-4">
+        <div className="flex w-full h-fit justify-between gap-2">
+          {/* If the user has clicked the back button, render the ProceedBackButton component to navigate back to the main page */}
+          {matchDataGetClicked || viewScoutingData ? (
+            <>
+              <button
+                className="flex items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#242424] text-white font-bold ~text-2xl/5xl text-center p-2"
+                onClick={() => {
+                  setMatchDataGetClicked(false);
+                  setViewScoutingData(false);
+                }}
+              >
+                Back
+              </button>
+              <SettingsUpdateButton />
+            </>
+          ) : (
+            <div className="flex w-full h-fit gap-10">
+              <ProceedBackButton nextPage={"/"} back={true} />
+              {/* Render a button to update service workers */}
+              <SettingsUpdateButton />
+              <ProceedBackButton
+                nextPage={"/parse-data"}
+                message={"Parse Data"}
+              />
+            </div>
+          )}
         </div>
-        <SettingsButton
-          question="Clear Match Data"
-          state={matchDataClearClicked}
-          setState={setMatchDataClearClicked}
-        />
-        <SettingsButton
-          question="Clear Scouting Data"
-          state={scoutDataClearClicked}
-          setState={setScoutDataClearClicked}
-        />
+        {/* Settings Buttons */}
+        {/* If the user has clicked the view matches data button, render the SettingsViewMatchData component */}
+        { !viewScoutingData ?
+          (
+            <div className="flex flex-col w-full h-fit max-h-16 justify-between gap-2 mb-2">
+              <button
+                className="flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl p-2"
+                onClick={() => navigate("/match-data")} // Toggles the state when the button is clicked
+              >
+                Get Match Data
+              </button>
+              <SettingsButton
+                question="Clear Match Data"
+                state={matchDataClearClicked}
+                setState={setMatchDataClearClicked}
+              />
+              <SettingsButton
+                question="Clear Scouting Data"
+                state={scoutDataClearClicked}
+                setState={setScoutDataClearClicked}
+              />
 
-        <SettingsButton
-          question="View Matches Data"
-          state={viewScoutingData}
-          setState={setViewScoutingData}
-        />
+              <SettingsButton
+                question="View Matches Data"
+                state={viewScoutingData}
+                setState={setViewScoutingData}
+              />
+            </div>
+          ) :
+          (
+            <SettingsViewMatchData />
+          )
+      }
+        
       </div>
 
       {/* If the user has clicked the get match data button, render the SettingsMatchDataScanner component */}
@@ -99,73 +110,6 @@ const SettingsPage = () => {
           setState={setMatchDataGetClicked}
         />
       )}
-
-      {/* If the user has clicked the view matches data button, render the SettingsViewMatchData component */}
-      {viewScoutingData && <SettingsViewMatchData />}
-
-      {/* If the user has clicked the back button, render the ProceedBackButton component to navigate back to the main page */}
-      {matchDataGetClicked || viewScoutingData ? (
-        <div
-          style={{
-            border: "1.63dvh solid #1D1E1E",
-            width: "14.91dvw",
-            height: "17.84dvh",
-            backgroundColor: "#242424",
-            borderRadius: "3.49dvh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            position: "absolute",
-            top: "1.07dvh",
-            left: "2.33dvw",
-          }}
-          onClick={() => {
-            setMatchDataGetClicked(false);
-            setViewScoutingData(false);
-          }}
-        >
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-            }}
-          >
-            Back
-          </h1>
-        </div>
-      ) : (
-        <>
-          <div
-            style={{
-              position: "absolute",
-              top: "2.33dvh",
-              left: "1.07dvw",
-              width: "14.91dvw",
-              height: "17.84dvh",
-            }}
-          >
-            <ProceedBackButton nextPage={"/"} back={true} />
-          </div>
-
-          <div
-            style={{
-              position: "absolute",
-              top: "2.33dvh",
-              right: "1.07dvw",
-              width: "18dvw",
-              height: "17.84dvh",
-            }}
-          >
-            <ProceedBackButton
-              nextPage={"/parse-data"}
-              message={"Parse Data"}
-            />
-          </div>
-        </>
-      )}
-      {/* Render a button to update service workers */}
-      <SettingsUpdateButton />
     </>
   );
 };

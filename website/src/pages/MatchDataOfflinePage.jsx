@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import SettingsBackButton from "../components/SettingsComponents/SettingsBackButton";
 
 const MatchDataOfflinePage = () => {
   const navigate = useNavigate();
@@ -44,113 +45,28 @@ const MatchDataOfflinePage = () => {
         onChange={handleFileSelect}
       />
       {/* back button */}
-      <div
-        style={{
-          border: "1.63dvh solid #1D1E1E",
-          width: "14.91dvw",
-          height: "17.84dvh",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          top: "1.07dvh",
-          left: "2.33dvw",
-        }}
-        onClick={() => {
-          navigate("/match-data");
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-          }}
-        >
-          Back
-        </h1>
-      </div>
+      <SettingsBackButton route={"/match-data"}/>
 
       {/* container */}
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          paddingTop: "5%",
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
+      <div className="flex flex-col items-center justify-center w-full h-full gap-4">
+        <h1 className="text-white font-bold ~text-2xl/5xl text-center pb-4">
           Scan QR Code To Load Match Suggestions
         </h1>
-        <div
-          style={{
-            width: "100%",
-            height: "75%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10%",
-          }}
-        >
-          <div
-            style={{
-              width: "35%",
-              height: "60%",
-              backgroundColor: "#242424",
-              border: "1.63dvh solid #1D1E1E",
-              borderRadius: "3.49dvh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+        <div className="flex w-full h-full items-center justify-center gap-4 px-4">
+          <button
+            type="button"
+            className="flex w-full h-full justify-center items-center gap-4 bg-[#242424] border-8 border-[#1D1E1E] rounded-xl p-4 text-white font-bold ~text-2xl/5xl text-center"
             onClick={() => document.getElementById("selectFiles").click()}
           >
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontSize: "5.58dvh",
-                fontWeight: "bold",
-              }}
-            >
-              Upload Match File
-            </h1>
-          </div>
-          <div
-            style={{
-              width: "25%",
-              height: "40%",
-              backgroundColor: "#242424",
-              border: "1.63dvh solid #1D1E1E",
-              borderRadius: "3.49dvh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+            Upload Match File
+          </button>
+          <button
+            type="button"
+            className="flex w-full h-full justify-center items-center gap-4 bg-[#242424] border-8 border-[#1D1E1E] rounded-xl p-4 text-white font-bold ~text-2xl/5xl text-center"
             onClick={() => doneClick()}
           >
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontSize: "5.58dvh",
-                fontWeight: "bold",
-              }}
-            >
-              Submit
-            </h1>
-          </div>
+            Submit
+          </button>
         </div>
       </div>
     </div>

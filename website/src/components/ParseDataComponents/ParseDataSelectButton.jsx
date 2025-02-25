@@ -44,32 +44,12 @@ const ParseDataSelectButton = ({ selectedFiles, setSelectedFiles }) => {
         onChange={handleFileSelect}
       />
       {/* Visible button to trigger file selection */}
-      <div
-        style={{
-          backgroundColor: "#242424",
-          width: "20dvw",
-          height: "20dvh",
-          border: "1.3dvh solid #1D1E1E",
-          borderRadius: "2.683dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
-        }}
+      <button
+        className="flex h-fit w-fit max-w-60 border-8 bg-[#242424] border-[#1D1E1E] rounded-xl justify-center items-center whitespace-pre-wrap break-words text-white font-bold ~text-2xl/5xl text-center p-4"
         onClick={() => document.getElementById("selectFiles").click()}
       >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "4.293dvh",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          Select Files
-        </h1>
-      </div>
+        Select Files
+      </button>
     </>
   );
 };

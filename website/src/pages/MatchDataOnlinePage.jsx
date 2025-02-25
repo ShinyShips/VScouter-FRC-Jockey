@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Scanner } from "@yudiel/react-qr-scanner";
 import { toast } from "react-toastify";
+import SettingsBackButton from "../components/SettingsComponents/SettingsBackButton";
 
 const MatchDataOnlinePage = () => {
   const navigate = useNavigate();
@@ -54,69 +55,15 @@ const MatchDataOnlinePage = () => {
   return (
     <div style={{ width: "100%", height: "100%" }}>
       {/* back button */}
-      <div
-        style={{
-          border: "1.63dvh solid #1D1E1E",
-          width: "14.91dvw",
-          height: "17.84dvh",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          top: "1.07dvh",
-          left: "2.33dvw",
-        }}
-        onClick={() => {
-          navigate("/match-data");
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-          }}
-        >
-          Back
-        </h1>
-      </div>
+      <SettingsBackButton route={"/match-data"}/>
 
       {/* container */}
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "5%",
-          paddingTop: "5%",
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
+      <div className="flex flex-col w-full h-full items-center justify-center">
+        <h1 className="text-white font-bold ~text-2xl/5xl text-center pb-4">
           Scan QR Code To Load Match Suggestions
         </h1>
-        <div
-          style={{
-            width: "100%",
-            height: "75%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "10%",
-          }}
-        >
-          <div style={{ width: "50%", height: "100%" }}>
+        <div className="flex w-full h-full gap-4 items-center justify-center">
+          <div className="w-1/2 h-full">
             <Scanner
               components={{ finder: false }}
               styles={{ video: { borderRadius: "7.5%" } }}
@@ -129,29 +76,12 @@ const MatchDataOnlinePage = () => {
               }
             />
           </div>
-          <div
-            style={{
-              width: "25%",
-              height: "50%",
-              backgroundColor: "#242424",
-              border: "1.63dvh solid #1D1E1E",
-              borderRadius: "3.49dvh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
+          <button
+            className="flex w-fit h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#242424] p-4 text-white font-bold ~text-2xl/5xl text-center"
             onClick={() => doneClick()}
           >
-            <h1
-              style={{
-                color: "#FFFFFF",
-                fontSize: "5.58dvh",
-                fontWeight: "bold",
-              }}
-            >
-              Submit
-            </h1>
-          </div>
+            Submit
+          </button>
         </div>
       </div>
     </div>

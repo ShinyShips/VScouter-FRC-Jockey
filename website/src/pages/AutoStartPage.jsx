@@ -64,7 +64,7 @@ const AutoStartPage = () => {
 
       <div className="flex flex-col gap-8 w-auto h-full">
         <h1 className="text-5xl font-bold text-white text-center">Auto Start</h1>
-        <h1 className="text-2xl text-white text-center">Click where your robot starts on the field.</h1>
+        <h2 className="text-2xl text-white text-center">Click where your robot starts on the field.</h2>
         <div className="w-full h-auto">
           <ProceedBackButton
             back={true}

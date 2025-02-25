@@ -9,30 +9,9 @@ import FRCReefscapeLogo from "../assets/FRCReefscapeLogo.svg";
 
 const HomePage = () => {
   return (
-    <div style={{ height: "100dvh", width: "100dvw" }}>
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: "8dvh 5dvw 8dvh 5dvw",
-          gap: "3dvw",
-        }}
-      >
-        <div
-          style={{
-            width: "auto",
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "3dvh",
-          }}
-        >
+    <main className="h-screen w-screen">
+      <div className="flex w-full h-full justify-center items-center py-8 px-8 gap-6">
+        <div className="flex flex-col w-auto h-full justify-center items-center gap-6">
           <img
             src={VScouterLogo}
             style={{
@@ -51,15 +30,7 @@ const HomePage = () => {
           />
         </div>
 
-        <div
-          style={{
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            gap: "2dvh",
-            flex: "1",
-          }}
-        >
+        <div className="flex flex-col h-full justify-center gap-2 flex-1">
           <div
             style={{
               width: "100%",
@@ -71,36 +42,12 @@ const HomePage = () => {
               message={"Start Scouting"}
             />
           </div>
-
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <HomeDumpDataButton />
-          </div>
-
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <ProceedBackButton nextPage={`/settings`} message={"Settings"} />
-          </div>
-
-          <div
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-          >
-            <HomeFullscreenButton />
-          </div>
+          <HomeDumpDataButton />
+          <ProceedBackButton nextPage={`/settings`} message={"Settings"} />
+          <HomeFullscreenButton />
         </div>
       </div>
-    </div>
+    </main>
   );
 };
 

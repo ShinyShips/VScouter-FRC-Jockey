@@ -57,21 +57,23 @@ const InitialSelectAlliance = ({ currentAlliance, setAlliance }) => {
         <div
           className="flex justify-between w-full gap-2">
           {/* Red */}
-          <div
+          <button
+            type="button"
             className="bg-[#C80000] rounded-xl h-20 flex-grow"
             style={{
               boxShadow: `0px 0px 0px ${redSelected ? "1rem #F7B900" : " 0.5rem #1D1E1E"} inset`,
             }}
             onClick={() => clickAlliance("red")}
-          ></div>
+          ></button>
           {/* Blue */}
-          <div
+          <button
+            type="button"
             className="bg-[#00008B] rounded-xl h-20 flex-grow"
             style={{
               boxShadow: `0px 0px 0px ${blueSelected ? "1rem #F7B900" : "0.5rem #1D1E1E"} inset`,
             }}
             onClick={() => clickAlliance("blue")}
-          ></div>
+          ></button>
         </div>
       </div>
     </>

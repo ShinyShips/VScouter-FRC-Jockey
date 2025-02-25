@@ -5,6 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 import ProceedBackButton from "../components/ProceedBackButton";
+import SettingsBackButton from "../components/SettingsComponents/SettingsBackButton";
 
 const MatchDataPage = () => {
   const [matchDataURL, setMatchDataURL] = useState(""); // The URL to the match data (can be got from both the QR code or the text box)
@@ -44,68 +45,19 @@ const MatchDataPage = () => {
   };
 
   return (
-    <div style={{width: "100%", height: "100%"}}>
-      <div
-        style={{
-          border: "1.63dvh solid #1D1E1E",
-          width: "14.91dvw",
-          height: "17.84dvh",
-          backgroundColor: "#242424",
-          borderRadius: "3.49dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          top: "1.07dvh",
-          left: "2.33dvw",
-        }}
-        onClick={() => {
-          navigate("/settings");
-        }}
-      >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "5.58dvh",
-            fontWeight: "bold",
-          }}
-        >
-          Back
-        </h1>
-      </div>
+    <div className="w-full h-full">
+      {/* Back Button */}
+      <SettingsBackButton route={"/settings"} />
+      
       {/* Container */}
-      <div
-        style={{
-          width: "100%",
-          height: "100%",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "10%",
-        }}
-      >
-        <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "8dvh",
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-          >
+      <div className="flex flex-col items-center justify-center w-full h-full gap-4">
+        <h1 className="text-white font-bold ~text-2xl/5xl text-center p-2">
             Load Match Data
           </h1>
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "5.58dvh",
-              fontWeight: "bold",
-              textAlign: "center",
-            }}
-          >
+          <h2 className="text-white font-bold ~text-1xl/4xl text-center p-2">
             Are You Online (Using QR Code) or Offline (Using Match Schedule File)?
-          </h1>
-        <div style={{width: "100%", height: "40%",  display: "flex", gap: "4%", paddingLeft: "10%", paddingRight: "10%"}}>
+          </h2>
+        <div className="flex w-full h-full gap-4 px-4">
           <ProceedBackButton nextPage={"/match-data/online"} message={"Online"} />
           
           <ProceedBackButton nextPage={"/match-data/offline"} message={"Offline"} />

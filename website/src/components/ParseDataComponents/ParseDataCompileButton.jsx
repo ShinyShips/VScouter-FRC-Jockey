@@ -75,30 +75,10 @@ const ParseDataCompileButton = ({ selectedFiles, setSelectedFiles }) => {
     <>
       {/* The button to compile and download the CSV */}
       <div
-        style={{
-          backgroundColor: "#242424",
-          width: "20dvw",
-          height: "20dvh",
-          border: "1.3dvh solid #1D1E1E",
-          borderRadius: "2.683dvh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          whiteSpace: "pre-wrap",
-          wordWrap: "break-word",
-        }}
+className="flex h-fit w-fit max-w-60 border-8 bg-[#242424] border-[#1D1E1E] rounded-xl justify-center items-center whitespace-pre-wrap break-words text-white font-bold ~text-2xl/5xl text-center p-4"
         onClick={convertJSONToCSV}
       >
-        <h1
-          style={{
-            color: "#FFFFFF",
-            fontSize: "4.293dvh",
-            fontWeight: "bold",
-            textAlign: "center",
-          }}
-        >
-          Compile And Download
-        </h1>
+        Compile And Download
       </div>
     </>
   );

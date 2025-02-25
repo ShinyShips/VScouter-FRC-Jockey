@@ -17,17 +17,16 @@ const InitialSelectTeamButton = ({
 }) => {
   return (
     <>
-      <div
-        className="border border-[#1D1E1E] rounded-lg bg-[#393939] text-white w-full h-full flex flex-row items-center"
+      <button
+        type="button"
+        className="border border-[#1D1E1E] rounded-lg bg-[#393939] text-white w-full h-full flex flex-row items-center text-xl pl-2"
         style={{
           backgroundColor: `#${currentTeamStatus ? "393939" : "6C6C6C"}`,
         }}
         onClick={() => clickTeam(currentTeamType, currentTeamStatus)}
       >
-        <h1 className="text-xl pl-2">
-          {teamName}
-        </h1>
-      </div>
+        {teamName}
+      </button>
     </>
   );
 };

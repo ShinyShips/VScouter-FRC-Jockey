@@ -24,18 +24,18 @@ const ScoringCoralPlaceCounter = ({
       }}
     >
       <span
-        className="w-full h-full flex justify-between items-center border-[#1D1E1E] border-4 rounded-xl"
+        className="w-full h-full flex justify-between items-center border-[#1D1E1E] border-4 rounded-xl text-white ~text-2xl/6xl font-bold px-4"
         style={{
           backgroundColor: "rgb(133, 133, 133, .50)",
         }}
         id={position + "CoralPlace"}
       >
-        <h1 className="text-white ~text-2xl/6xl font-bold pl-4">
+        <span>
           {position}
-        </h1>
-        <h1 className="text-white ~text-2xl/6xl font-bold pr-4">
+        </span>
+        <span>
           {placeCount}
-        </h1>
+        </span>
       </span>
     </button>
   );

@@ -14,7 +14,6 @@ const ScoringAlgaeSection = ({ pickData, placeData }) => {
       </h1>
       <div
         className="w-full h-full ~p-1/4 overflow-hidden"
-        // style={{ width: "90%", height: "45%", marginBottom: "2dvh" }}
         onClick={() => {
           if (pickPositionSelected == "") {
             toast.warn("Please select a pick position first.");
@@ -28,10 +27,7 @@ const ScoringAlgaeSection = ({ pickData, placeData }) => {
           pickData={pickData}
         />
       </div>
-      <div
-        className="w-full h-full p-2" 
-        // style={{ width: "90%", height: "25%", marginBottom: "2dvh" }}
-      >
+      <div className="w-full h-auto min-h-24 ~p-1/4" >
         <ScoringPickup
           pickData={pickData}
           pickPositionSelected={pickPositionSelected}

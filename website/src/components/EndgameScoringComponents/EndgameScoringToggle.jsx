@@ -2,26 +2,19 @@ import React from "react";
 
 const EndgameScoringToggle = ({ question, selected, setSelected }) => {
   return (
-    <div
+    <button
+      className="flex w-full h-full justify-center items-center border-8 border-[#1D1E1E] rounded-xl ~px-0/2 py-2"
       style={{
-        width: "100%",
-        height: "100%",
         backgroundColor: selected ? "#507144" : "#242424",
-        borderColor: "#1D1E1E",
-        borderRadius: "3.49dvh",
-        borderWidth: "1.63dvh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
       }}
       onClick={() => {
         setSelected(!selected);
       }}
     >
-      <h1 style={{ color: "#FFFFFF", fontSize: "6dvh", fontWeight: "bold" }}>
+      <h2 className="text-white ~text-2xl/5xl font-bold">
         {question}
-      </h1>
-    </div>
+      </h2>
+    </button>
   );
 };
 

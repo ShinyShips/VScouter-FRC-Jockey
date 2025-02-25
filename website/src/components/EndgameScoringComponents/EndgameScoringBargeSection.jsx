@@ -3,31 +3,16 @@ import EndgameScoringBargeToggle from "./EndgameScoringBargeToggle";
 
 const EndgameScoringBargeSection = ({ climbData }) => {
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        backgroundColor: "#3B3B3B",
-        borderColor: "#1D1E1E",
-        borderWidth: "2dvh",
-        borderRadius: "3.49dvh",
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-        padding: "3dvh 2dvw",
-        gap: "1dvw", //edit this
-      }}
-    >
+    <section className="flex w-full h-full bg-[#3B3B3B] border-8 border-[#1D1E1E] rounded-xl justify-center items-center px-5 py-3 gap-2">
       {climbData.map((singleClimbData) => (
-        <div id={climbData.position} style={{ height: "100%", flex: "1" }}>
+        <div id={climbData.position} className="h-full flex-1">
           <EndgameScoringBargeToggle
             position={singleClimbData.position}
             climbData={climbData}
           />
         </div>
       ))}
-    </div>
+    </section>
   );
 };
 

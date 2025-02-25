@@ -11,14 +11,13 @@ const ScoringPickup = ({
       {pickData.map((singlePickData, index) => {
         if (!singlePickData.hide) {
           return (
-            <div className="w-full h-full" key={index}>
               <ScoringPickupButton
                 position={singlePickData.position}
                 pickPositionSelected={pickPositionSelected}
                 setPickPositionSelected={setPickPositionSelected}
                 place={place}
+                key={index}
               />
-            </div>
           );
         }
         return null;

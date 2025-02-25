@@ -247,7 +247,7 @@ const ScoringPage = ({
   }, []);
 
   return (
-    <div className="grid grid-cols-2 grid-rows-[repeat(3,auto)] grid-flow-col w-full max-w-full h-full justify-center p-5 gap-5">
+    <main className="grid grid-cols-2 grid-rows-[repeat(3,auto)] grid-flow-col w-full max-w-full h-full justify-center p-5 gap-5">
       {mode == "auto" && (
         <section
           className="w-full h-16 flex justify-center items-center rounded-lg border-8 border-[#1D1E1E]"
@@ -273,70 +273,15 @@ const ScoringPage = ({
         </div>
       </section>
       <section className="w-full h-fit flex flex-col justify-center items-center">
-          <div className="w-full h-full flex justify-center items-center pb-4">
-            <h1 className="text-white text-5xl font-bold">
-              {mode.charAt(0).toUpperCase() + mode.slice(1)}
-            </h1>
-          </div>
+        <h1 className="text-white text-5xl font-bold">
+          {mode.charAt(0).toUpperCase() + mode.slice(1)}
+        </h1>
       </section>
       <section className="w-full flex flex-col justify-center items-center gap-5">
           <div className="grid grid-cols-2 grid-rows-2 grid-flow-col w-full h-full justify-center items-center gap-5 px-4">
-            <div className="w-full h-full">
-              <ProceedBackButton
-                nextPage={pastPage}
-                back={true}
-                inputs={{
-                  ...(states?.inputs || {}),
-                  [mode]: {
-                    coral: Object.assign(
-                      {
-                        placeL1Count: placeCoralL1Count,
-                        placeL2Count: placeCoralL2Count,
-                        placeL3Count: placeCoralL3Count,
-                        placeL4Count: placeCoralL4Count,
-                        placeDropMissCount: placeCoralDropMissCount,
-                      },
-                      ...pickCoralData.map((singleCoralData) => ({
-                        ["pick" +
-                        singleCoralData.position.replace(" ", "") +
-                        "Count"]: singleCoralData.count,
-                      }))
-                    ),
-                    algae: Object.assign(
-                      {
-                        placeNetShot: placeAlgaeNetShot,
-                        placeProcessor: placeAlgaeProcessor,
-                        placeDropMiss: placeAlgaeDropMiss,
-                      },
-                      ...pickAlgaeData.map((singleAlgaeData) => ({
-                        ["pick" +
-                        singleAlgaeData.position.replace(" ", "") +
-                        "Count"]: singleAlgaeData.count,
-                      }))
-                    ),
-                    ...(mode === "auto" && {
-                      passedStartLine,
-                      coralPreloaded,
-                    }),
-                  },
-                }}
-              />
-            </div>
-            <button
-              className="w-full h-full flex justify-center items-center cursor-pointer border-8 border-[#1D1E1E] rounded-xl bg-[#242424]"
-              onClick={handleUndo}
-            >
-              <h1 className="text-white ~text-2xl/5xl font-bold p-2">
-                Undo
-              </h1>
-            </button>
-          <div
-            className="w-full h-full row-span-2" 
-          // style={{ width: "50%", height: "100%" }}
-          >
             <ProceedBackButton
-              nextPage={nextPage}
-              blink={autoEnded}
+              nextPage={pastPage}
+              back={true}
               inputs={{
                 ...(states?.inputs || {}),
                 [mode]: {
@@ -366,11 +311,59 @@ const ScoringPage = ({
                       "Count"]: singleAlgaeData.count,
                     }))
                   ),
-                  ...(mode === "auto" && { passedStartLine }),
+                  ...(mode === "auto" && {
+                    passedStartLine,
+                    coralPreloaded,
+                  }),
                 },
               }}
             />
-          </div>
+            <button
+              className="w-full h-full flex justify-center items-center cursor-pointer border-8 border-[#1D1E1E] rounded-xl bg-[#242424]"
+              onClick={handleUndo}
+            >
+              <h1 className="text-white ~text-2xl/5xl font-bold p-2">
+                Undo
+              </h1>
+            </button>
+            <div className="w-full h-full row-span-2">
+              <ProceedBackButton
+                nextPage={nextPage}
+                blink={autoEnded}
+                inputs={{
+                  ...(states?.inputs || {}),
+                  [mode]: {
+                    coral: Object.assign(
+                      {
+                        placeL1Count: placeCoralL1Count,
+                        placeL2Count: placeCoralL2Count,
+                        placeL3Count: placeCoralL3Count,
+                        placeL4Count: placeCoralL4Count,
+                        placeDropMissCount: placeCoralDropMissCount,
+                      },
+                      ...pickCoralData.map((singleCoralData) => ({
+                        ["pick" +
+                        singleCoralData.position.replace(" ", "") +
+                        "Count"]: singleCoralData.count,
+                      }))
+                    ),
+                    algae: Object.assign(
+                      {
+                        placeNetShot: placeAlgaeNetShot,
+                        placeProcessor: placeAlgaeProcessor,
+                        placeDropMiss: placeAlgaeDropMiss,
+                      },
+                      ...pickAlgaeData.map((singleAlgaeData) => ({
+                        ["pick" +
+                        singleAlgaeData.position.replace(" ", "") +
+                        "Count"]: singleAlgaeData.count,
+                      }))
+                    ),
+                    ...(mode === "auto" && { passedStartLine }),
+                  },
+                }}
+              />
+            </div>
           </div>
         </section>
         <section className="w-full h-full">
@@ -379,7 +372,7 @@ const ScoringPage = ({
             placeData={placeAlgaeData}
           />
         </section>
-    </div>
+    </main>
   );
 };
 

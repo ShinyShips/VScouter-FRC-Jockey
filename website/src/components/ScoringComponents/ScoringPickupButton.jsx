@@ -23,7 +23,7 @@ const ScoringPickupButton = ({
       id={position+place+"Pick"}
     >
       <h1 
-        className="text-white ~text-xs/xl ~p-0/2 font-bold"
+        className="text-white ~text-xs/xl ~px-0/2 ~py-1/3 font-bold"
       >
         {position}
       </h1>

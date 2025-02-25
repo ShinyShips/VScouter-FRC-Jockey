@@ -51,136 +51,64 @@ const EndgameScoringPage = () => {
   const [comment, setComment] = useState(states?.inputs?.comment || "");
 
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100%",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        gap: "2dvh", //edit this
-        padding: "4dvh 2dvw", //edit this
-      }}
-    >
-      <div style={{ flex: "0.67", width: "100%" }}>
-        <EndgameScoringBargeSection climbData={climbData} />
-      </div>
-      <div
-        style={{
-          flex: "0.45",
-          width: "85%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "1dvw",
-        }}
-      >
-        <div style={{ flex: "1", height: "100%" }}>
-          <EndgameScoringToggle
-            question={"Climbed Failed"}
-            selected={climbFailed}
-            setSelected={setClimbFailed}
-          />
+    <main className="flex flex-col w-full h-full justify-center items-center px-5 py-3 gap-2">
+      <h1 className="text-white ~text-4xl/7xl font-bold w-full h-fit text-center py-2">
+        Endgame Scoring
+      </h1>
+      <EndgameScoringBargeSection climbData={climbData} />
+      <section className="flex w-full gap-1 py-4">
+        <EndgameScoringToggle
+          question={"Climbed Failed"}
+          selected={climbFailed}
+          setSelected={setClimbFailed}
+        />
+        <EndgameScoringToggle
+          question={"Played Defense"}
+          selected={playedDefense}
+          setSelected={setPlayedDefense}
+        />
+        <EndgameScoringToggle
+          question={"Broke Down"}
+          selected={brokeDown}
+          setSelected={setBrokeDown}
+        />
+      </section>
+      <section className="flex w-full h-full gap-2">
+        <div className="flex w-2/3 h-full">
+          <EndgameScoringComments comment={comment} setComment={setComment} />
         </div>
-        <div style={{ flex: "1", height: "100%" }}>
-          <EndgameScoringToggle
-            question={"Played Defense"}
-            selected={playedDefense}
-            setSelected={setPlayedDefense}
-          />
-        </div>
-        <div style={{ flex: "1", height: "100%" }}>
-          <EndgameScoringToggle
-            question={"Broke Down"}
-            selected={brokeDown}
-            setSelected={setBrokeDown}
-          />
-        </div>
-      </div>
-      <div
-        style={{
-          flex: "1",
-          width: "100%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: "1.5dvw",
-        }}
-      >
-        <div
-          style={{
-            height: "100%",
-            width: "75%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <div style={{ width: "100%", flex: "1" }}>
-            <EndgameScoringComments comment={comment} setComment={setComment} />
-          </div>
-          <h1
-            style={{
-              color: "#FFFFFF",
-              fontSize: "9dvh",
-              fontWeight: "bold",
-              width: "100%",
-              flex: "0.5",
+        <div className="flex flex-col w-1/3 h-full gap-2">
+          <ProceedBackButton
+            back={true}
+            nextPage="/teleop-scoring"
+            inputs={{
+              ...(states?.inputs || {}),
+              shallowClimbAttempted,
+              deepClimbAttempted,
+              parkAttempted,
+              climbFailed,
+              playedDefense,
+              brokeDown,
+              comment,
             }}
-          >
-            Endgame Scoring
-          </h1>
+          />
+          <ProceedBackButton
+            nextPage={`/game-start`}
+            inputs={{
+              ...(states?.inputs || {}),
+              shallowClimbAttempted,
+              deepClimbAttempted,
+              parkAttempted,
+              climbFailed,
+              playedDefense,
+              brokeDown,
+              comment,
+            }}
+            message={"Submit"}
+          />
         </div>
-        <div
-          style={{
-            height: "100%",
-            width: "25%",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "2dvh",
-          }}
-        >
-          <div style={{ flex: "0.25", width: "100%" }}>
-            <ProceedBackButton
-              back={true}
-              nextPage="/teleop-scoring"
-              inputs={{
-                ...(states?.inputs || {}),
-                shallowClimbAttempted,
-                deepClimbAttempted,
-                parkAttempted,
-                climbFailed,
-                playedDefense,
-                brokeDown,
-                comment,
-              }}
-            />
-          </div>
-          <div style={{ flex: "1", width: "100%" }}>
-            <ProceedBackButton
-              nextPage={`/game-start`}
-              inputs={{
-                ...(states?.inputs || {}),
-                shallowClimbAttempted,
-                deepClimbAttempted,
-                parkAttempted,
-                climbFailed,
-                playedDefense,
-                brokeDown,
-                comment,
-              }}
-              message={"Submit"}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };
 

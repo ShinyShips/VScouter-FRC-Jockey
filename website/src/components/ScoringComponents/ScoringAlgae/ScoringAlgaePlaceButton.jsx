@@ -31,17 +31,7 @@ const ScoringAlgaePlaceButton = ({
         {position}
       </h1>
 
-      <div
-        className="flex w-full h-full justify-center items-center gap-4"
-        // style={{
-        //   width: "95%",
-        //   height: "75%",
-        //   display: "flex",
-        //   justifyContent: "center",
-        //   alignItems: "center",
-        //   gap: "1.5dvw",
-        // }}
-      >
+      <div className="flex w-full h-full justify-center items-center gap-4">
         {/* <img
           src={icon}
           className="object-contain h-12 filter invert"
@@ -51,10 +41,7 @@ const ScoringAlgaePlaceButton = ({
           //   filter: "invert(1)",
           // }}
         /> */}
-        <h1
-          className="text-white ~text-2xl/6xl font-bold" 
-        // style={{ color: "white", fontSize: "6.75dvh", fontWeight: "bold" }}
-        >
+        <h1 className="text-white ~text-2xl/6xl font-bold">
           {placeCount}
         </h1>
       </div>

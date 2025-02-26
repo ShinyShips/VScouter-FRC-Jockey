@@ -70,6 +70,9 @@ const ScoringPage = ({
   const [placeAlgaeDropMiss, setPlaceAlgaeDropMiss] = useState(
     statePath?.algae?.placeDropMiss || 0
   );
+  const [placeAlgaeRemove, setPlaceAlgaeRemove] = useState(
+    statePath?.algae?.placeRemove || 0
+  );
 
   const placeAlgaeData = [
     {
@@ -87,6 +90,11 @@ const ScoringPage = ({
       count: placeAlgaeDropMiss,
       setCount: setPlaceAlgaeDropMiss,
     },
+    // {
+    //   position: "Remove",
+    //   count: placeAlgaeRemove,
+    //   setCount: setPlaceAlgaeRemove,
+    // },
   ];
 
   // only for auto scoring
@@ -124,6 +132,7 @@ const ScoringPage = ({
           placeAlgaeNetShot,
           placeAlgaeProcessor,
           placeAlgaeDropMiss,
+          placeAlgaeRemove,
 
           coralPreloaded,
         },
@@ -156,6 +165,7 @@ const ScoringPage = ({
     placeAlgaeNetShot,
     placeAlgaeProcessor,
     placeAlgaeDropMiss,
+    placeAlgaeRemove,
     coralPreloaded,
   ]);
 
@@ -185,6 +195,7 @@ const ScoringPage = ({
       setPlaceAlgaeNetShot(previousState.placeAlgaeNetShot);
       setPlaceAlgaeProcessor(previousState.placeAlgaeProcessor);
       setPlaceAlgaeDropMiss(previousState.placeAlgaeDropMiss);
+      setPlaceAlgaeRemove(previousState.placeAlgaeRemove);
       setPassedStartLine(previousState.passedStartLine);
       setStateStack([...stateStack]);
 
@@ -223,6 +234,9 @@ const ScoringPage = ({
         case "-":
           idToClick = "Drop/MissAlgaePlace";
           break;
+        case "=":
+          idToClick = "RemoveAlgaePlace";
+          break;
         default:
           pickCoralData.map((singleCoralPickData, index) => {
             buttonClicked == pickCoralKeybinds[index] &&
@@ -249,17 +263,15 @@ const ScoringPage = ({
   return (
     <main className="grid grid-cols-2 grid-rows-[repeat(3,auto)] grid-flow-col w-full max-w-full h-full justify-center p-5 gap-5">
       {mode == "auto" && (
-        <section
-          className="w-full h-16 flex justify-center items-center rounded-lg border-8 border-[#1D1E1E]"
+        <button
+          className="w-full h-16 flex justify-center items-center rounded-lg border-8 border-[#1D1E1E] text-white text-xl md:text-4xl font-bold"
           style={{
             backgroundColor: passedStartLine ? "#507144" : "#242424",
           }}
           onClick={() => setPassedStartLine(!passedStartLine)}
           >
-            <h1 className="text-white text-xl md:text-4xl font-bold">
-              Passed Starting Line
-            </h1>
-        </section>
+            Passed Starting Line
+        </button>
       )}
       <section 
         className="w-full row-span-2 flex flex-col justify-center items-center gap-5"
@@ -304,6 +316,7 @@ const ScoringPage = ({
                       placeNetShot: placeAlgaeNetShot,
                       placeProcessor: placeAlgaeProcessor,
                       placeDropMiss: placeAlgaeDropMiss,
+                      placeRemove: placeAlgaeRemove,
                     },
                     ...pickAlgaeData.map((singleAlgaeData) => ({
                       ["pick" +
@@ -319,12 +332,10 @@ const ScoringPage = ({
               }}
             />
             <button
-              className="w-full h-full flex justify-center items-center cursor-pointer border-8 border-[#1D1E1E] rounded-xl bg-[#242424]"
+              className="w-full h-full flex justify-center items-center cursor-pointer border-8 border-[#1D1E1E] rounded-xl bg-[#242424] text-white ~text-2xl/5xl font-bold p-2"
               onClick={handleUndo}
             >
-              <h1 className="text-white ~text-2xl/5xl font-bold p-2">
-                Undo
-              </h1>
+              Undo
             </button>
             <div className="w-full h-full row-span-2">
               <ProceedBackButton
@@ -352,6 +363,7 @@ const ScoringPage = ({
                         placeNetShot: placeAlgaeNetShot,
                         placeProcessor: placeAlgaeProcessor,
                         placeDropMiss: placeAlgaeDropMiss,
+                        placeRemove: placeAlgaeRemove,
                       },
                       ...pickAlgaeData.map((singleAlgaeData) => ({
                         ["pick" +

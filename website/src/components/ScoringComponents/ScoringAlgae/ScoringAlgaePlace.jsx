@@ -11,17 +11,16 @@ const AutoScoringAlgaePlace = ({
   placeData,
   pickData,
 }) => {
-  const positionIcons = [NetShotIcon, ProcessorIcon, DropMissIcon];
+  //const positionIcons = [NetShotIcon, ProcessorIcon, DropMissIcon];
   return (
     <div className="flex w-full h-full justify-between items-center gap-1">
-      {["Net", "Processor", "Miss", "Remove"].map((position, index) => (
+      {["Net", "Processor", "Miss"].map((position, index) => (
         <div
           className="w-full h-full max-w-[25%]" 
           key={index}
         >
           <ScoringAlgaePlaceButton
             position={position}
-            icon={positionIcons[index]}
             placeCount={placeData[index].count}
             setPlaceCount={placeData[index].setCount}
             pickPositionSelected={pickPositionSelected}

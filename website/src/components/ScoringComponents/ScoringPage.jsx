@@ -90,11 +90,11 @@ const ScoringPage = ({
       count: placeAlgaeDropMiss,
       setCount: setPlaceAlgaeDropMiss,
     },
-    // {
-    //   position: "Remove",
-    //   count: placeAlgaeRemove,
-    //   setCount: setPlaceAlgaeRemove,
-    // },
+    {
+      position: "Remove",
+      count: placeAlgaeRemove,
+      setCount: setPlaceAlgaeRemove,
+    },
   ];
 
   // only for auto scoring

@@ -20,6 +20,18 @@ const SettingsPage = () => {
   const [scoutDataClearClicked, setScoutDataClearClicked] = useState(false);
   const [viewScoutingData, setViewScoutingData] = useState(false);
 
+  const handlePlayerStationChange = (event) => {
+    const selectedStation = event.target.value;
+    localStorage.setItem("playerStation", selectedStation);
+  };
+
+  useEffect(() => {
+    const savedPlayerStation = localStorage.getItem("playerStation");
+    if (savedPlayerStation) {
+      document.getElementById(savedPlayerStation.toLowerCase().replace(" ", "")).checked = true;
+    }
+  }, []);
+
   useEffect(() => {
     /**
      * If the user has clicked the clear match data button, clear the local storage for match data and notify the user.
@@ -67,7 +79,33 @@ const SettingsPage = () => {
             </div>
           )}
         </div>
-        {/* Settings Buttons */}
+        {/* Player Station Radio Buttons */}
+        <div className="flex w-full h-fit gap-4 text-white">
+          <label className="has-[:checked]:bg-[#507144] flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl ~p-2/6" htmlFor="red1">
+            <input className="hidden" type="radio" id="red1" name="playerStation" value="Red 1" onChange={handlePlayerStationChange}></input>
+            Red 1
+          </label>
+          <label className="has-[:checked]:bg-[#507144] flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl ~p-2/6" htmlFor="red2">
+            <input className="hidden" type="radio" id="red2" name="playerStation" value="Red 2" onChange={handlePlayerStationChange}></input>
+            Red 2
+          </label>
+          <label className="has-[:checked]:bg-[#507144] flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl ~p-2/6" htmlFor="red3">
+            <input className="hidden" type="radio" id="red3" name="playerStation" value="Red 3" onChange={handlePlayerStationChange}></input>
+            Red 3
+          </label>
+          <label className="has-[:checked]:bg-[#507144] flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl ~p-2/6" htmlFor="blue1">
+            <input className="hidden" type="radio" id="blue1" name="playerStation" value="Blue 1" onChange={handlePlayerStationChange}></input>
+            Blue 1
+          </label>
+          <label className="has-[:checked]:bg-[#507144] flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl ~p-2/6" htmlFor="blue2">
+            <input className="hidden" type="radio" id="blue2" name="playerStation" value="Blue 2" onChange={handlePlayerStationChange}></input>
+            Blue 2
+          </label>
+          <label className="has-[:checked]:bg-[#507144] flex w-full h-full items-center justify-center border-8 border-[#1D1E1E] rounded-xl bg-[#4A4A4A] text-white font-bold ~text-2xl/5xl ~p-2/6" htmlFor="blue3">
+            <input className="hidden" type="radio" id="blue3" name="playerStation" value="Blue 3" onChange={handlePlayerStationChange}></input>
+            Blue 3
+          </label>
+        </div>
         {/* If the user has clicked the view matches data button, render the SettingsViewMatchData component */}
         { !viewScoutingData ?
           (

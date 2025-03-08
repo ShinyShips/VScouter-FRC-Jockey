@@ -96,6 +96,7 @@ const HomeDumpDataButton = () => {
         }
 
         const jsonData = JSON.parse(data).data;
+        const playerStation = localStorage.getItem("playerStation") || "Unknown";
         console.log(jsonData);
         const csvConvertedData = [];
         csvConvertedData.push(addHeaders(jsonData[0]))
@@ -110,7 +111,7 @@ const HomeDumpDataButton = () => {
         );
         element.setAttribute(
           "download",
-          `VScouterData-${new Date().toLocaleTimeString()}.json`
+          `VScouterData-${new Date().toLocaleTimeString()}-${playerStation}.json`
         );
 
         element.style.display = "none";

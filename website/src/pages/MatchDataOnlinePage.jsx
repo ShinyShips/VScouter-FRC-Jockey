@@ -36,6 +36,9 @@ const MatchDataOnlinePage = () => {
           });
         }
       }
+      
+      // Sort the match data by matchNum
+      qualMatchesCleaned.sort((a, b) => a.matchNum - b.matchNum);
 
       localStorage.setItem("matchData", JSON.stringify(qualMatchesCleaned)); // Storing the data in local storage so it can be accessed if the website is refreshed
 

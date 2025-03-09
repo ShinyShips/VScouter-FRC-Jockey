@@ -29,7 +29,14 @@ const ProceedBackButton = ({
   inputs = {},
   message = null,
   blink = false,
+  stateStack,
+  mode,
 }) => {
+
+  const saveStateToLocalStorage = (newStateStack, stateName) => {
+    localStorage.setItem(stateName, JSON.stringify(newStateStack));
+  };
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -49,7 +56,16 @@ const ProceedBackButton = ({
       inputs = Object.fromEntries(
         Object.entries(inputs).filter(([key, value]) => value !== null)
       );
+      inputs.back = 2
       console.log(inputs);
+      if(stateStack){
+        if(mode == "auto"){
+          saveStateToLocalStorage(stateStack, "autoStateStack")
+        }
+        if(mode == "teleop"){
+          saveStateToLocalStorage(stateStack, "teleopStateStack")
+        }
+      }
       navigate(nextPage, { state: { inputs } });
     } else {
       // If the back prop is set to false, check if all inputs have been filled in
@@ -75,6 +91,9 @@ const ProceedBackButton = ({
           fullData.data.push({ ...inputs });
           // Save the inputs to local storage
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
+
+          saveStateToLocalStorage([], "autoStateStack")
+          saveStateToLocalStorage([], "teleopStateStack")
           navigate(nextPage, {
             state: {
               inputs: {
@@ -87,6 +106,14 @@ const ProceedBackButton = ({
         } else {
           // If the next page is not the game start page, pass the inputs as props to the next page
           console.log(inputs);
+          if(stateStack){
+            if(mode == "auto"){
+              saveStateToLocalStorage(stateStack, "autoStateStack")
+            }
+            if(mode == "teleop"){
+              saveStateToLocalStorage(stateStack, "teleopStateStack")
+            }
+          }
 
           navigate(nextPage, { state: { inputs } });
         }

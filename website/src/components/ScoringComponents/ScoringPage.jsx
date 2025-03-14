@@ -105,13 +105,26 @@ const ScoringPage = ({
     statePath?.coralPreloaded || true
   );
 
+  const loadStateFromLocalStorage = (stateName) => {
+    const savedState = localStorage.getItem(stateName);
+    return savedState ? JSON.parse(savedState) : [];
+  };
+
   // State stack for undo functionality
-  const [stateStack, setStateStack] = useState([]);
+  const [stateStack, setStateStack] = useState(() => {
+    if(mode == "auto"){
+      return loadStateFromLocalStorage("autoStateStack")
+    }
+    if(mode == "teleop"){
+      return loadStateFromLocalStorage("teleopStateStack")
+    }
+  });
 
   const [autoEnded, setAutoEnded] = useState(false);
 
   // Function to handle state changes and push current state to stack
   useEffect(() => {
+
     // default passing the starting line because you cant do anything without moving
     if (mode == "auto" && stateStack.length == 1) {
       setPassedStartLine(true);
@@ -119,7 +132,8 @@ const ScoringPage = ({
         setAutoEnded(true);
       }, 15000);
     }
-    setStateStack([
+
+    let newStateStack = [
       ...stateStack,
       Object.assign(
         {
@@ -149,7 +163,18 @@ const ScoringPage = ({
           };
         })
       ),
-    ]);
+    ]
+    
+    //This runs twice every time the page loads so if we went back a page to Auto...
+    //Then we need to prevent this from running twice to prevent the stateStack from being populated incorrectly
+    if(states?.inputs.back > 0){
+      states.inputs.back--
+    }
+    else {
+      setStateStack(newStateStack);
+    }
+
+
   }, [
     ...pickCoralData.map((singleCoralData) => {
       return singleCoralData.count;
@@ -171,6 +196,7 @@ const ScoringPage = ({
 
   // Function to handle undo operation
   const handleUndo = () => {
+
     if (stateStack.length > 1) {
       console.log("Undo1");
       stateStack.pop();
@@ -294,6 +320,8 @@ const ScoringPage = ({
             <ProceedBackButton
               nextPage={pastPage}
               back={true}
+              stateStack={stateStack}
+              mode={mode}
               inputs={{
                 ...(states?.inputs || {}),
                 [mode]: {
@@ -340,6 +368,8 @@ const ScoringPage = ({
             <div className="w-full h-full row-span-2">
               <ProceedBackButton
                 nextPage={nextPage}
+                stateStack={stateStack}
+                mode={mode}
                 blink={autoEnded}
                 inputs={{
                   ...(states?.inputs || {}),

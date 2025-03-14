@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import fieldMap from "../../assets/FieldMap.png";
+import fieldMapBlue from "../../assets/FieldMapBlue.png";
 
 import AutoStartNumberSection from "./AutoStartNumberSection";
 
@@ -13,12 +14,12 @@ import AutoStartNumberSection from "./AutoStartNumberSection";
  * @param {string} alliance - alliance of the map (either "blue" or "red")
  * @return {JSX.Element} The rendered component.
  */
-const AutoStartMap = ({ startPoses, setStartPoses }) => {
+const AutoStartMap = ({ startPoses, setStartPoses, alliance }) => {
   return (
     <div className="relative h-full w-full">
       {/* Render the map for the robot to start */}
       <img
-        src={fieldMap}
+        src={alliance == "redAlliance" ? fieldMap : fieldMapBlue}
         className="h-auto w-full max-h-96 lg:max-h-full"
       />
       <div className="absolute flex left-0 top-0 h-48 w-full lg:h-96">

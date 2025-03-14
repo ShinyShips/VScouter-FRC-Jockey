@@ -59,7 +59,7 @@ const AutoStartPage = () => {
   return (
     <div className="flex w-full h-full justify-center items-center gap-5 p-2">
       <div className="w-full h-full"> 
-        <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} />
+        <AutoStartMap startPoses={startPoses} setStartPoses={setStartPoses} alliance={states.inputs.alliance}/>
       </div>
 
       <div className="flex flex-col gap-8 w-auto h-full">

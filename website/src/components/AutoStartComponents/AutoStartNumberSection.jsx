@@ -41,7 +41,9 @@ const AutoStartNumberSection = ({ number, startPoses, setStartPoses }) => {
         onClick={() => {
           updateStartPoses();
         }}
-      ></div>
+      >
+        <p className="text-4xl font-bold text-white">{number}</p>
+      </div>
     </>
   );
 };

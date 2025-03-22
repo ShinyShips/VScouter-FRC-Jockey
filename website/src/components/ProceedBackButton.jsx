@@ -88,10 +88,12 @@ const ProceedBackButton = ({
           const fullData = {
             data: JSON.parse(localStorage.getItem("scoutingData"))?.data || [],
           };
-          fullData.data.push({ ...inputs });
+          
+          const { back, ...filteredInputs } = inputs;
+          fullData.data.push({ ...filteredInputs });
           // Save the inputs to local storage
           localStorage.setItem("scoutingData", JSON.stringify(fullData));
-
+          console.log(fullData);
           saveStateToLocalStorage([], "autoStateStack")
           saveStateToLocalStorage([], "teleopStateStack")
           navigate(nextPage, {

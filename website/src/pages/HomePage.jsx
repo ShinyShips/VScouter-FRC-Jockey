@@ -28,6 +28,9 @@ const HomePage = () => {
               filter: "invert(100%)",
             }}
           />
+          <p className="text-white">
+            <strong>Version</strong>: 1.3.0
+          </p>
         </div>
 
         <div className="flex flex-col h-full justify-center gap-2 flex-1">

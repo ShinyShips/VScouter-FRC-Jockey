@@ -149,6 +149,7 @@ const ScoringPage = ({
           placeAlgaeRemove,
 
           coralPreloaded,
+          passedStartLine,
         },
         ...pickCoralData.map((singleCoralData) => {
           return {

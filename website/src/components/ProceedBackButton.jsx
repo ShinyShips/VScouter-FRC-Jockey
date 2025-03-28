@@ -90,6 +90,12 @@ const ProceedBackButton = ({
           };
           
           const { back, ...filteredInputs } = inputs;
+
+          // Append the match number to the comment
+          if (filteredInputs.comment) {
+            filteredInputs.comment = `Match ${filteredInputs.matchNumber}: ${filteredInputs.comment}`;
+          }
+
           fullData.data.push({ ...filteredInputs });
           // Save the inputs to local storage
           localStorage.setItem("scoutingData", JSON.stringify(fullData));

@@ -85,42 +85,60 @@ const HomeDumpDataButton = () => {
     }
     return row;
   };
+
+const cleanText = (text) => {
+  if (typeof text !== "string") return text;
+  // Remove non-printable characters and trim extra spaces
+  return text.replace(/[\x00-\x1F\x7F]/g, "").trim();
+};
+
+const handleDumpData = () => {
+  const data = localStorage.getItem("scoutingData");
+  if (data === '{"data":[]}') {
+    toast.error("No Data To Dump");
+    return;
+  }
+
+  const jsonData = JSON.parse(data).data;
+  const playerStation = localStorage.getItem("playerStation") || "Unknown";
+
+  // Clean the comments column
+  const cleanedData = jsonData.map((row) => {
+    if (row.comment) {
+      row.comment = cleanText(row.comment);
+    }
+    return row;
+  });
+
+  const csvConvertedData = [];
+  csvConvertedData.push(addHeaders(cleanedData[0]));
+  for (const value of Object.values(cleanedData)) {
+    csvConvertedData.push(addRow(value));
+  }
+
+  const element = document.createElement("a");
+  element.setAttribute(
+    "href",
+    "data:application/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(csvConvertedData))
+  );
+  element.setAttribute(
+    "download",
+    `VScouterData-${new Date().toLocaleTimeString()}-${playerStation}.json`
+  );
+
+  element.style.display = "none";
+  document.body.appendChild(element);
+
+  element.click();
+
+  document.body.removeChild(element);
+};
+
   return (
     <button
       className="flex h-full w-full border-8 bg-[#242424] border-[#1D1E1E] rounded-xl justify-center items-center whitespace-pre-wrap break-words text-white font-bold ~text-2xl/5xl text-center p-2"
-      onClick={() => {
-        const data = localStorage.getItem("scoutingData");
-        if (data == '{"data":[]}') {
-          toast.error("No Data To Dump");
-          return;
-        }
-
-        const jsonData = JSON.parse(data).data;
-        const playerStation = localStorage.getItem("playerStation") || "Unknown";
-        console.log(jsonData);
-        const csvConvertedData = [];
-        csvConvertedData.push(addHeaders(jsonData[0]))
-        for (const value of Object.values(jsonData)) {
-          csvConvertedData.push(addRow(value))
-        }
-
-        var element = document.createElement("a");
-        element.setAttribute(
-          "href",
-          "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(csvConvertedData))
-        );
-        element.setAttribute(
-          "download",
-          `VScouterData-${new Date().toLocaleTimeString()}-${playerStation}.json`
-        );
-
-        element.style.display = "none";
-        document.body.appendChild(element);
-
-        element.click();
-
-        document.body.removeChild(element);
-      }}
+      onClick={() => {handleDumpData();}}
     >
       Dump Data
     </button>

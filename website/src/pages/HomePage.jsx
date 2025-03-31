@@ -29,7 +29,7 @@ const HomePage = () => {
             }}
           />
           <p className="text-white">
-            <strong>Version</strong>: 1.3.1
+            <strong>Version</strong>: 1.3.2
           </p>
         </div>
 
